@@ -1,5 +1,4 @@
-const {fetchMyIp, fetchCoordsByIp} = require('./iss'); //some reason the {} matters
-let ip;
+const {fetchMyIp, fetchCoordsByIp, fetchISSFlyOverTimes} = require('./iss'); //some reason the {} matters
 
 fetchMyIp((error, ip) => {
   if (error) {
@@ -15,30 +14,16 @@ fetchMyIp((error, ip) => {
       return;
     }
     console.log('It worked! Returned coordinates:' , data);
+
+    fetchISSFlyOverTimes(data,(error, passTimes) => { //spent a hour till i realized I had the name of the function
+      if (error) {
+        console.log("It didn't work!", error);
+        return;
+      }
+      console.log('It worked! Returned flyover times:' , passTimes);
+    });
   });
-  
 }
-
-
 
 );
 
-
-
-
-
-
-
-
-
-//example if it wasnt using arrow function
-// function handleFetchMyIpCallback(error, ip) {
-//   if (error) {
-//     console.log("It didn't work!", error);
-//     return;
-//   }
-
-//   console.log('It worked! Returned IP:', ip);
-// }
-
-// fetchMyIp(handleFetchMyIpCallback);
