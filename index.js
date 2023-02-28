@@ -29,8 +29,8 @@ const {fetchMyIp, fetchCoordsByIp, fetchISSFlyOverTimes, nextISSTimesForMyLocati
 
 nextISSTimesForMyLocation((error,passTimes) => {
   if (error) {
-    return console.log ("It didn't work!", error)
+    return console.log("It didn't work!", error);
   }
 
-  console.log (passTimes)
-})
+  console.log(passTimes);
+});
